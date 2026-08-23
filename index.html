@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chandra Sekhar Merugu</title>
+<meta name="description" content="Solution Architecture, Platform Engineering &amp; Technical Leadership — Infrastructure, Cloud, DevOps, Security, GenAI.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%232563eb%22/><text x=%2250%22 y=%2266%22 font-size=%2258%22 font-family=%22Arial,sans-serif%22 font-weight=%22700%22 fill=%22white%22 text-anchor=%22middle%22>C</text></svg>">
+<style>
+  :root {
+    --bg: #f7f8fa;
+    --bg-elevated: #ffffff;
+    --text: #16181d;
+    --text-muted: #55606e;
+    --border: #e2e5ea;
+    --accent: #2563eb;
+    --accent-text: #ffffff;
+    --tag-bg: #eef2ff;
+    --tag-text: #3948a3;
+    --shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 1px 3px rgba(16, 24, 40, 0.06);
+    --shadow-hover: 0 4px 10px rgba(16, 24, 40, 0.08), 0 2px 4px rgba(16, 24, 40, 0.06);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1115;
+      --bg-elevated: #171a21;
+      --text: #eceef1;
+      --text-muted: #9aa4b2;
+      --border: #2a2f3a;
+      --accent: #5b8def;
+      --accent-text: #0f1115;
+      --tag-bg: #1c2440;
+      --tag-text: #a9bcf7;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+      --shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  main {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 5rem;
+  }
+
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin: 0 0 0.75rem;
+  }
+
+  h1 {
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    line-height: 1.15;
+    margin: 0 0 0.6rem;
+    letter-spacing: -0.01em;
+  }
+
+  .tagline {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin: 0 0 1.5rem;
+    max-width: 60ch;
+  }
+
+  .credentials {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0 0 2rem;
+  }
+
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.55rem 1.1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+
+  .btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-hover); }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--accent-text);
+    border-color: var(--accent);
+  }
+
+  .btn-secondary {
+    background: var(--bg-elevated);
+    color: var(--text);
+  }
+
+  section { margin-top: 3.5rem; }
+
+  h2 {
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin: 0 0 1.25rem;
+    font-weight: 700;
+  }
+
+  .about p { color: var(--text-muted); max-width: 68ch; }
+
+  .labs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+
+  .lab-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.4rem;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: var(--shadow);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  }
+
+  .lab-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--accent);
+  }
+
+  .lab-card .status {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+
+  .lab-card h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.15rem;
+  }
+
+  .lab-card p {
+    margin: 0 0 1rem;
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    flex-grow: 1;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+  }
+
+  .lab-card.placeholder {
+    box-shadow: none;
+    border-style: dashed;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--text-muted);
+    cursor: default;
+  }
+
+  .lab-card.placeholder:hover {
+    transform: none;
+    border-color: var(--border);
+    box-shadow: none;
+  }
+
+  .cert-groups {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .cert-groups h4 {
+    margin: 0 0 0.35rem;
+    font-size: 0.85rem;
+    color: var(--text);
+  }
+
+  .cert-groups p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  footer {
+    margin-top: 4.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    justify-content: space-between;
+  }
+
+  footer a { color: var(--text-muted); }
+
+  @media (max-width: 480px) {
+    main { padding: 2.5rem 1.25rem 3.5rem; }
+    footer { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <p class="eyebrow">Home</p>
+  <h1>Chandra Sekhar Merugu</h1>
+  <p class="tagline">
+    Solution Architecture, Platform Engineering &amp; Technical Leadership —
+    Infrastructure, Cloud, DevOps, Security, GenAI.
+  </p>
+  <p class="credentials">
+    TOGAF&reg; Certified · DevSecOps &amp; Container Security · 15+ years in Enterprise Infrastructure
+  </p>
+
+  <div class="cta-row">
+    <a class="btn btn-primary" href="https://www.linkedin.com/in/chandrasekhar-merugu">LinkedIn</a>
+    <a class="btn btn-secondary" href="https://github.com/chanduazad001">GitHub</a>
+  </div>
+
+  <section class="about">
+    <h2>About</h2>
+    <p>
+      Lead Consultant with 15+ years of experience building, securing, and
+      operating enterprise infrastructure across Linux, Kubernetes, cloud,
+      observability, and DevSecOps — spanning solution architecture,
+      platform engineering, infrastructure automation, security, and
+      vulnerability management.
+    </p>
+    <p>
+      Each lab below is where that experience turns into deliberate
+      architecture practice: designing solutions, documenting constraints,
+      evaluating trade-offs, and recording the reasoning behind decisions —
+      not just drawing systems, but understanding why they work, how they
+      scale, how they fail, how they're secured, and how they're operated.
+    </p>
+  </section>
+
+  <section id="labs">
+    <h2>Labs</h2>
+    <div class="labs-grid">
+
+      <a class="lab-card" href="https://chanduazad001.github.io/architecture-lab/">
+        <span class="status">Active</span>
+        <h3>Architecture Lab</h3>
+        <p>
+          Cloud architecture, platform engineering, and system design —
+          case studies from on-prem three-tier apps through Kubernetes,
+          each with full data-flow, security, availability, and ADR docs.
+        </p>
+        <div class="tags">
+          <span class="tag">Cloud Architecture</span>
+          <span class="tag">Kubernetes</span>
+          <span class="tag">System Design</span>
+        </div>
+      </a>
+
+      <a class="lab-card" href="https://chanduazad001.github.io/cybersecurity-architecture-lab/">
+        <span class="status">Active</span>
+        <h3>Cybersecurity Architecture Lab</h3>
+        <p>
+          Application, cloud, and enterprise security architecture —
+          starting with the vulnerability management program: lifecycle,
+          risk scoring, remediation SLAs, metrics, and ADRs.
+        </p>
+        <div class="tags">
+          <span class="tag">Vulnerability Management</span>
+          <span class="tag">DevSecOps</span>
+        </div>
+      </a>
+
+      <div class="lab-card placeholder">
+        <p style="margin:0;">More labs added as they're designed and documented.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="certifications">
+    <h2>Certifications</h2>
+    <div class="cert-groups">
+      <div>
+        <h4>Architecture</h4>
+        <p>TOGAF&reg; Certified (Level 1 &amp; 2)</p>
+      </div>
+      <div>
+        <h4>Security &amp; DevSecOps</h4>
+        <p>CEH Master · CEH Practical · CompTIA Security+ · CompTIA CySA+ · DevSecOps &amp; Container Security</p>
+      </div>
+      <div>
+        <h4>Cloud &amp; Infrastructure</h4>
+        <p>RHCSA · AWS Cloud Practitioner · Microsoft Azure Fundamentals · NVIDIA AI Infrastructure &amp; Operations</p>
+      </div>
+      <div>
+        <h4>Agile</h4>
+        <p>PSM I</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>&copy; 2026 Chandra Sekhar Merugu</span>
+    <a href="https://www.linkedin.com/in/chandrasekhar-merugu">LinkedIn</a>
+    <a href="https://github.com/chanduazad001">GitHub</a>
+  </footer>
+
+</main>
+</body>
+</html>
